@@ -7,7 +7,7 @@ BASE_URL = "http://localhost:8000"
 def fetch_items():
     try:
         response = requests.get(f"{BASE_URL}/items/")
-        response.raise_for_status()  # Raise an error for bad status
+        response.raise_for_status() 
         return response.json()
     except requests.exceptions.RequestException as e:
         st.error(f"Error fetching items: {e}")
@@ -133,14 +133,11 @@ def display_header():
         st.session_state.page = "view_list"
     st.markdown("---")
 
-# Initialize session state
 if "page" not in st.session_state:
     st.session_state.page = "home"
 
-# Set theme
 set_custom_theme()
 
-# Display header
 display_header()
 
 # Display content based on page
